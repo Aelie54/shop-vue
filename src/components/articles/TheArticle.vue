@@ -9,6 +9,7 @@ export default {
     article: Object,
   },
   mixins: [removePropertyInbasketMixin, removeToBasketMixin],
+  emits: ["remove-to-basket"],
   methods: {
     notify() {
       this.$notify({
@@ -16,6 +17,13 @@ export default {
         title: "Important message",
         text: "L'article à bien été ajouté au panier",
       });
+    },
+    handleDelete(article: { id: number }) {
+      if (!confirm("🥺 owh non, est-ce vrai ?")) {
+        return;
+      }
+      this.$emit("remove-to-basket", article.id),
+        this.removePropertyInbasket(article);
     },
   },
 };
@@ -40,13 +48,7 @@ export default {
         >
           <button class="btn btn-secondary">+</button>
         </span>
-        <span
-          v-if="article.inbasket"
-          @click="
-            $emit('remove-to-basket', article.id),
-              removePropertyInbasket(article)
-          "
-        >
+        <span v-if="article.inbasket" @click="handleDelete(article)">
           <button class="btn btn-danger">-</button>
         </span>
       </div>

@@ -21,15 +21,18 @@ export default {
 <template>
   <header>
     <div class="bg-dark fs-3 d-flex p-5 justify-content-center">
-      <nav class="d-flex gap-5 justify-content-center">
-        <RouterLink to="/" class="text-light text-decoration-none">
-          Croquettes
+      <nav class="d-flex gap-5 justify-content-arround">
+        <RouterLink to="/" class="text-light text-decoration-none btn btn-dark">
+          <span class="fs-1">🍪</span>
         </RouterLink>
 
-        <RouterLink to="/basket" class="text-light text-decoration-none">
-          Panier
+        <RouterLink
+          to="/basket"
+          class="text-light text-decoration-none btn btn-dark"
+        >
+          <span class="fs-1">🛒</span>
           <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary border border-warning"
           >
             {{ getBasketSize }}
           </span>

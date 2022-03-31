@@ -1,12 +1,14 @@
 import { defineStore } from "pinia";
-import myArticle from "./inventory.json";
+// import myArticle from "./inventory.json";
 
 export const useBasketStore = defineStore({
   id: "basket",
   state: () => ({
-    articles: myArticle["articles"],
+    articles: [],
+    // articles: myArticle["articles"],
     inBasket: [],
   }),
+  persist: true,
   getters: {
     getInBasket: (state) => state.inBasket,
     getArticles: (state) => state.articles,

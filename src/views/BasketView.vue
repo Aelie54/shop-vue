@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <div class="about d-flex p-5">
+  <div class="about d-flex p-5 justify-content-center align-item-center">
     <TheBasketItems />
   </div>
 </template>

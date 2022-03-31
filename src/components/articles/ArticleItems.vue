@@ -35,7 +35,7 @@ export default {
 
       //l 'ajoute dans le tableau panier du store
       this.inBasket.push(item_to_add);
-    }
+    },
   },
 };
 </script>
