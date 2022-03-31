@@ -20,6 +20,13 @@ export default {
     forceQuantityToInt(article: { quantity: number }) {
       article.quantity = Math.round(article.quantity);
     },
+    handleDelete(article: { id: number }) {
+      if (!confirm("🥺 owh non, est-ce vrai ? ")) {
+        return;
+      }
+      this.removeToBasket(article.id);
+      this.removePropertyInbasket(article);
+    },
   },
 };
 </script>
@@ -36,7 +43,9 @@ export default {
       <th>Unit price</th>
       <th>Price</th>
       <th v-if="basket_articles.length > 0">
-        <i class="fa-solid fa-trash-can"></i>
+        <i
+          class="fa-solid fa-2x text-center text-danger fa-trash-can border-danger"
+        ></i>
       </th>
     </tr>
     <tr v-for="b_a in basket_articles" :key="b_a.id">
@@ -48,7 +57,7 @@ export default {
           class="text-light"
           type="number"
           v-model="b_a.quantity"
-          name="quantity" 
+          name="quantity"
           min="1"
           max="100"
           id="quantity"
@@ -57,8 +66,8 @@ export default {
       <td>{{ b_a.price }} {{ b_a.currency }}</td>
       <td>{{ b_a.price * b_a.quantity }} {{ b_a.currency }}</td>
       <td>
-        <span @click="removeToBasket(b_a.id), removePropertyInbasket(b_a)">
-          <button class="btn btn-danger">-</button>
+        <span @click="handleDelete(b_a)">
+          <button class="btn btn-dark border border-danger">-</button>
         </span>
       </td>
     </tr>
