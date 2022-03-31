@@ -13,15 +13,13 @@ export const useBasketStore = defineStore({
 
     getTotalPrice: (state) => {
       let total = 0;
-      state.inBasket.map( (item : {price: number, quantity: number}) => {
-        total+= (item.price * item.quantity)
-      })
-      return total
+      state.inBasket.map((item: { price: number; quantity: number }) => {
+        total += item.price * item.quantity;
+      });
+      return total;
     },
 
-
-
-    getBasketSize: (state) => state.inBasket.length
+    getBasketSize: (state) => state.inBasket.length,
   },
   actions: {},
 });
